@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React Day 1 - Single File</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel for JSX -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+      max-width: 500px;
+      margin: auto;
+    }
+    button {
+      padding: 8px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- React injects UI here (SPA concept) -->
+  <div id="root"></div>
+
+  <!-- React Code -->
+  <script type="text/babel">
+
+    /* ----------------------------
+       Component (UI block)
+       ---------------------------- */
+    function App() {
+
+      // State (data that changes)
+      const [count, setCount] = React.useState(0);
+
+      return (
+        <div className="box">
+          <h1>⚛️ React Day 1</h1>
+
+          <p>
+            This entire UI is rendered inside a single HTML file.
+            No page reloads → Single Page Application.
+          </p>
+
+          <h3>Hello Santhosh 👋</h3>
+
+          <p>
+            Button Click Count: <strong>{count}</strong>
+          </p>
+
+          {/* Event + Virtual DOM update */}
+          <button onClick={() => setCount(count + 1)}>
+            update
+          </button>
+
+          <hr />
+
+          <p>
+            🔹 React uses Virtual DOM  
+            <br />
+            🔹 Only this number updates, not the full page  
+            <br />
+            🔹 JSX = HTML inside JavaScript
+          </p>
+        </div>
+      );
+    }
+
+    /* ----------------------------
+       Render component to browser
+       ---------------------------- */
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+
+  </script>
+</body>
+</html>
